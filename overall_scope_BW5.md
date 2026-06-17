@@ -2,7 +2,7 @@
 
 **Project root:** `C:\ReverseEngineeringMCP\TibcoSource\PCSEngineARIService`  
 **BW version:** BW5  
-**Generated:** 2026-06-17 10:54:41  
+**Generated:** 2026-06-17 11:04:24  
 **Total interfaces / batch processes:** 12
 
 > Complexity bands are derived from measured metrics (activities, subprocesses, transitions, transformations, loops, integration technologies). The exact rubric is documented in the appendix and can be recalibrated. Trigger 'kind' and 'integration pattern' detection is heuristic and should be confirmed during detailed analysis.
@@ -122,30 +122,44 @@ A *shared / library* process is a (sub)process reused by two or more interfaces 
 
 ### 3.4 Program-level dependency flow
 
-Each node is an interface / batch process, coloured by complexity band. Arrows show **interface-to-interface** calls (one interface's hierarchy invokes another interface's starter process).
+No interface-to-interface calls exist — every interface is independent at the program level (shared coupling is via the library processes in 3.5). Interfaces are grouped into one colour-coded **row per complexity band**:
 
 ```mermaid
-flowchart LR
-  I0_RestrictionsUpdateEventReceiverStarter["RestrictionsUpdateEventReceiverStarter"]:::vhigh
-  I1_ARIFullDeltaRefreshStarter["ARIFullDeltaRefreshStarter"]:::vhigh
-  I2_RatesUpdateEventReceiverStarter["RatesUpdateEventReceiverStarter"]:::vhigh
-  I3_ARIRedeliveryHandlerStarter["ARIRedeliveryHandlerStarter"]:::vhigh
-  I4_ARIEventGatewayStarter["ARIEventGatewayStarter"]:::vhigh
-  I5_ARIMessageFlowCheckStarter["ARIMessageFlowCheckStarter"]:::high
-  I6_LoadRatePlanIDDetails["LoadRatePlanIDDetails"]:::high
-  I7_UpdateRatePlanIDsStarter["UpdateRatePlanIDsStarter"]:::high
-  I8_LoadARIMessageTimerDetails["LoadARIMessageTimerDetails"]:::medium
-  I9_EngineStartup["EngineStartup"]:::medium
-  I10_EngineShutdown["EngineShutdown"]:::medium
-  I11_SetLoggingSharedVar["SetLoggingSharedVar"]:::low
+flowchart TB
+  subgraph BAND_vhigh["Very High — 5 interface(s)"]
+    direction LR
+    I0_RestrictionsUpdateEventReceiverStarter["RestrictionsUpdateEventReceiverStarter"]:::vhigh
+    I1_ARIFullDeltaRefreshStarter["ARIFullDeltaRefreshStarter"]:::vhigh
+    I2_RatesUpdateEventReceiverStarter["RatesUpdateEventReceiverStarter"]:::vhigh
+    I3_ARIRedeliveryHandlerStarter["ARIRedeliveryHandlerStarter"]:::vhigh
+    I4_ARIEventGatewayStarter["ARIEventGatewayStarter"]:::vhigh
+  end
+  subgraph BAND_high["High — 3 interface(s)"]
+    direction LR
+    I5_ARIMessageFlowCheckStarter["ARIMessageFlowCheckStarter"]:::high
+    I6_LoadRatePlanIDDetails["LoadRatePlanIDDetails"]:::high
+    I7_UpdateRatePlanIDsStarter["UpdateRatePlanIDsStarter"]:::high
+  end
+  subgraph BAND_medium["Medium — 3 interface(s)"]
+    direction LR
+    I8_LoadARIMessageTimerDetails["LoadARIMessageTimerDetails"]:::medium
+    I9_EngineStartup["EngineStartup"]:::medium
+    I10_EngineShutdown["EngineShutdown"]:::medium
+  end
+  subgraph BAND_low["Low — 1 interface(s)"]
+    direction LR
+    I11_SetLoggingSharedVar["SetLoggingSharedVar"]:::low
+  end
   classDef vhigh fill:#ffd6d6,stroke:#c0392b,color:#000;
   classDef high fill:#ffe6cc,stroke:#e67e22,color:#000;
   classDef medium fill:#fff5cc,stroke:#d4ac0d,color:#000;
   classDef low fill:#d6f5d6,stroke:#27ae60,color:#000;
   classDef unrated fill:#eeeeee,stroke:#888888,color:#000;
+  style BAND_vhigh fill:#fff0f0,stroke:#cccccc;
+  style BAND_high fill:#fff6ee,stroke:#cccccc;
+  style BAND_medium fill:#fffbe6,stroke:#cccccc;
+  style BAND_low fill:#eefaee,stroke:#cccccc;
 ```
-
-> No interface-to-interface calls detected — every interface is independent at the program level (shared coupling is via library processes, see 3.5).
 
 ### 3.5 Library-level dependency flow
 
