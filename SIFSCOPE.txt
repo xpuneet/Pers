@@ -1,0 +1,70 @@
+Part1: Systems Integration Framework (based on SOA)
+Purpose
+Chaucer is seeking support to define and document a formal enterprise Systems Integration Framework, aligned to our cloud and data operating model. The framework will establish clear architectural direction, principles, and standard integration patterns to be used consistently across delivery teams and vendors.
+This engagement is focused on architecture and governance clarity, not simply tool selection or wholesale platform redesign. The expectation and ask is for SME collaboration and review, with the lead Architect at Chaucer, on recommendations for our integration framework, with design decisions/recommendations and rationales captured.
+The expected outputs and artefacts, peer produced and reviewed are:
+1.	Documented Systems Integration Framework
+2.	Reference architecture diagrams
+3.	Integration pattern catalogue
+4.	Decision guidance (API vs event vs orchestration)
+5.	Recommended guardrails and exception handling process.
+This can be in a single documented artefact (preferred) or multiple submissions/parts.
+Guidance should be actionable and delivery-oriented, tailored to support architecture governance, and sufficiently clear for both teams and suppliers to implement. The objective is not to produce a generic SOA or integration manual, conduct tool or vendor comparisons, nor redefine our cloud strategy. We are seeking supplier's expertise in applying practical integration knowledge within established architectural parameters, fostering effective collaboration and constructive dialogue with our internal architect. Final outputs will be completed and published to TDA as a shared responsibility.
+General Background
+As we continue our enterprise transformation, integration has become a critical enabler for:
+•	Increased automation
+•	Reduced manual re-key and workarounds
+•	Improved system-to-system data flow
+•	Consistent and scalable vendor integration
+While integration exists today, patterns and approaches vary. We want to move toward a cohesive, enterprise-level integration framework that favours reuse, loose coupling, and cloud-native services.
+Strategic Context
+The framework must support:
+•	Automation and straight-through processing
+•	Seamless data accessibility across systems
+•	Reduction in point-to-point integrations
+•	Consistent API usage across the technology estate
+•	Event-driven and asynchronous processing where appropriate
+•	Alignment to Azure cloud-native PaaS services
+ 
+Architectural Positioning:
+The framework should be based on a Service-Oriented Architecture (SOA) approach:
+•	Enterprise service reuse
+•	Business-capability aligned services
+•	Clear service ownership and governance
+•	It is not expected and should be explicitly defined to not look to adopt a microservices architecture model.
+•	A key focus is on integrating existing systems and services before creating new ones.
+Anticipated Target Integration Platform
+The framework should be aligned to the following Azure PaaS integration components:
+•	Azure API Management (APIM). single API entry point
+•	Azure Logic Apps. Orchestration and long-running workflows
+•	Azure Service Bus/Event Grid/Event Hub (with rationales). Asynchronous and event-driven integration
+•	Azure Functions. Low-level implementation logic (Python / .NET)
+ 
+SIF Scope
+The framework should clearly address:
+•	Synchronous data exchange (REST APIs)
+•	Asynchronous messaging and events
+•	Webhooks and notifications
+•	Cross-system process orchestration
+Including clear guidance on when to use each pattern.
+Core Principles to review and embed
+Indicative principles include:
+•	Loose coupling by default
+•	REST and JSON as integration standards
+•	APIs expose “just enough” business capability
+•	Integration logic resides in the integration platform
+•	APIM as the single API ingress point
+•	Asynchronous-first where availability or latency is a concern
+•	Clear separation between orchestration and implementation
+Security and operations:
+•	Managed Identity for Azure service authentication
+•	Azure Key Vault for secrets
+•	Source control and CI/CD for all integration assets
+•	Monitoring and Observability
+Data Platform Guardrails
+The data platform is not a default integration mechanism.
+The framework should define recommendations that include (but not limited to):
+•	When data platform processing is appropriate
+•	When it is not (e.g. real-time or transient integration)
+•	Ownership of data outputs and result stores
+•	Patterns for data exchange between SIF and the Data Platform (Snowflake)

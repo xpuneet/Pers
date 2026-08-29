@@ -1,0 +1,266 @@
+4 Oak Place, Stoke Mandeville, Aylesbury, HP22 5PJ
+
+Multi region point for IP catalouge
+
+Centralized vs seperate deployment model
+any case that cannot use private network
+
+
+Skeleton of Pattern doc -- 
+Archuitectural pillars
+define antipattern for each pattern
+
+
+Enter Architecture Principles
+
+Global Principles : Global Enterprise Architecture principles are guiding principles that provide a foundation for designing and implementing enterprise architecture at a global level across the CHAUCER Technology estate.
+
+These principles help ensure consistency, interoperability, and alignment across diverse business units, systems, and technologies.  
+
+EAG1 : Decisions must not be made based solely on reaching lower solution costs. Every strategic decision must be assessed based on its cost, risk, and benefits. Lower costs often represent greater risk and potentially fewer benefits. 
+
+Consider Whole Life Value, and all Costs, Risks and Benefits of IT Solutions. Adopt an "Enterprise First" approach to technology investments 
+EAG2 : Always consider adopting existing available IT solution platforms and products to support business requirements. For example: seek to leverage our investment in Microsoft Enterprise products for productivity and collaboration (E5 Enterprise).  
+EAG3 : Appropriate organisational structures, policies, and processes are in place to understand, assess and systematically manage security risks to the network and information systems supporting essential services.
+EAG4 :Choose Software as a Service (SaaS), before Platform as a Service (PaaS) before Infrastructure as a Service (IaaS). 
+Check hosting arrangements and data sensitivity when selecting cloud solutions. 
+Design exit strategy before entering cloud agreements. 
+Design solutions to take advantage of cloud features, such as elastic scaling, automated spin-down. 
+EAG5:Open standards should be used in all solutions to enable interoperability. 
+Implement loosely coupled components that can be replaced with alternative implementations that provide the same services. 
+Avoid closed, proprietary and tightly coupled solutions.  
+Be mindful when using SaaS, consider the question “Could we move our business data to another vendor if required?”. 
+EAG6:Focus on enabling access to data across the enterprise by API-first design approaches. 
+EAG7:Release minimum viable products early, test them with actual users, use PoCs (Proof of Concept) to mitigate risk, iterate and continue to build value incrementally. 
+EAG8:Avoid orphan and stranded assets that are not actively change managed or configuration managed.
+Follow statutory legal and government guidelines in asset management process to avoid penalties and fines. 
+Understand product and platform roadmaps, along with key lifecycle dates to ensure adherence to licensing requirements. 
+
+
+Integration Principles 
+1.All integration is mediated :The use of a centralised Integration Platform provides significant business benefits: 
+
+Increases agility and resilience in the face of change e.g., applications can be insulated from change or issues with other applications. 
+
+Enables more effective real-time monitoring and responses to incidents. 
+Increases opportunity for reuse across the enterprise. 
+Allows for the consistent implementation of security and data privacy policies & standards. 
+Maximises operational effectiveness and stability. 
+Reduces delivery timeframes and complexity. 
+Provides significant cost-saving in the medium to long term 
+Caucher Object Met :This principle enables the following CHAUCER Objectives: 
+Skills and Employment ensures optimal use and deployment of staff. 
+Health, Safety, and Security Standards enables more effective application of data security standards. 
+Customer Experience higher technology reliability and robustness enables business to perform stakeholder and customer engagement more effectively. 
+Value for Money drives lower total cost of ownership 
+
+Catalyst for Growth enables greater technology scalability 
+2. There is a single, central Integration Platform :The components of the Integration Platform are specialised to meet the requirements of specific integration styles. They do not have constraints related to specific business or departmental functions or requirements. The Integration Platform components can also scale to meet the needs of the whole Enterprise. Centralisation is mandated because: 
+It enables cost-effective (significantly cheaper) procurement of an integration product i.e., bought once and used by multiple business units. 
+It enables delivery speed and flexibility by focusing on specific products and skill sets; and enables centralised learning. 
+Provides the opportunity for more effective operational management of the Integration Platform in terms of monitoring, incident management, technology manager (e.g., upgrades) etc.  
+Caucher Object Met : This principle enables the following CHAUCER Objectives: 
+Skills and Employment reducing the variety of technologies will reduce the complexity of the skill set required to deliver on, and support, it. 
+Customer Experience enables a more robust set of solutions, which allows business users to deal with stakeholders more effectively. 
+Value for Money drives a lower total cost of ownership across several domains: hosting, licensing, skills, operational support 
+3.The Integration Platform is mission-critical :All decisions at both the architecture and design levels (including individual scenario design) must consider any implications to the operability and availability of the Platform, and its components. 
+The Platform must use best-in-class, proven products and solutions. 
+The Platform must be operated (run) as a mission-critical solution e.g., support response times, 24/7 monitoring, alerting and issue anticipation should be in place. 
+Platform change management should be dealt with carefully; changes should be thoroughly tested and introduced gradually, at appropriate times. 
+The Integration Platform must be subject to stringent SLAs around availability, performance, resilience and recovery 
+Caucher Object Met :This principle enables the following CHAUCER Objectives: 
+Customer Experience ensures solution robustness which enables the business to perform more efficient and effective customer/stakeholder engagement. 
+Value for Money reduces the extent of down-time and the consequent resource wastage associated with outages. 
+Catalyst for Growth enables scalability 
+4. All integration is secured :The integration platform must be subject to all necessary security assessments and processes, and on an ongoing basis if required e.g., input validation, penetration testing, SOC reports etc. 
+
+The Integration Platform components must be able to support the technical security standards dictated by the relevant Data and Information Security standards & policies. 
+
+Design patterns should have a security attribute included. 
+
+Integration-specific data & information security standards should be defined covering topics of relevance to integration e.g., message encryption, transport-layer security etc. 
+Caucher Object Met : This principle enables the following CHAUCER Objectives: 
+
+Health, Safety, and Security Standards the primary objective of this principle is to ensure security compliance. 
+
+Sustainable and Good Neighbour promotes the safety of stakeholders within the CHAUCER ecosystem. 
+
+Customer Experience ensures safe handling of customer data. 
+
+Value for Money avoids costs associated with data breaches 
+5.  Integration solutions must have a traceable business outcome : There are several benefits to linking integration solutions with business processes and outcomes: 
+
+It makes it easier to assess the technical impact of changes to business processes i.e., if the business process needs to change, or the data involved in that process, what integration solutions might need to change, and what impact there might be on integrated systems. 
+
+The corollary is also true – it makes it possible to see which business processes are impacted in the event of an integration scenario or platform failure or incident. 
+
+It will allow more effective engagement with the business when dealing with platform, scenario or other technical change management. 
+
+It ensures that integration scenarios are actually realising a business benefit and/or enabling a business process and avoids the creation of unnecessary or pointless integration. 
+
+It enables a realistic ‘value’ to be placed on integration solutions and enabling a more effective support response e.g., it informs ‘criticality’. 
+
+It supports decision-making during the design process. 
+
+It supports scoping, descoping and prioritisation decisions during the delivery phase of a project 
+Caucher Objectives met :This principle enables the following CHAUCER Objectives: 
+
+Customer Experience ensures that solutions have a business- and customer outcome-focus. 
+
+Value for Money ensures that solutions are adopted which realise specific value
+7. All integration is pattern-based : Integration Design Patterns (and before that Integration Architecture Patterns) need to be defined covering a wide range of integration scenario types. 
+8.Integration assets are reusable:Integration assets should be designed with reuse and flexibility in mind. New requirements should first consider leveraging or extending existing assets before creating new ones. 
+CHAUCER Objectives Met : This principle enables the following CHAUCER Objectives: 
+
+Skills and Employment ensures staff are focused on value-add activities (and not repeating what has been done before) 
+
+Health, Safety, and Security Standards à drives compliance with security and other standards. 
+
+Value for Money significantly reduces TCO i.e., delivery and operational costs across functional domains. 
+
+Catalyst for Growth drives agility, lower cost and therefore supports growth opportunities as they arise. 
+9.All integration assets are published and searchable
+10.Loosely coupled integration is strongly preferred
+11.Focus on service lifecycle, not project lifecycle
+
+Tech Principles
+Technology Principles ensure the healthy management of underlying Infrastructure on which data and application services are built. 
+
+ 
+
+With the adoption of Public Cloud and Hosted (SAAS) environments, traditional technology domains have diversified, with new domains constructed to suit emerging technology landscapes, with specific governance requirements. 
+
+The following principles are therefore overarching of multiple Technology domains, with specific technical domains either referenced separately or addressed in Engineering Standards. 
+1.Use Open Standards and Open Source
+2.Exploit the Cloud
+
+Application Principles
+ 
+
+Application Principles set a guideline for the selection, change and design of business line applications at Chaucer. Specific implementation of applications shall be determined by neighbouring domains, their capabilities, adoption, and ability to secure. 
+1.Build reusable services, not siloed applications. Expose application solution functionality as APIs  
+2.Reuse before buy or build
+3. Use ‘out of the box’ before ‘Configure’, before ‘customise’
+4.Adopt platform/product-based approach to application identification & delivery
+5.Scale horizontally
+
+Data & Information Principles 
+Data Enterprise Principles follow the following train of thought… 
+
+All data should be Findable, Accessible, Interoperable and Reusable: 
+
+ 
+
+Chaucer term definition: 
+
+ 
+
+Findable	 
+
+Data is easy to find by both human and machine, based on standard descriptions of the metadata that allow the discovery of interesting datasets. 
+
+Accessible	 
+
+Data is stored in a manner that facilitates easy access and/or downloaded under clearly defined license and access conditions. 
+
+Interoperable	 
+
+Data is held in a format which enables integration with other datasets by both human and machine. 
+
+Reusable	 
+
+Data is readily available for future application or to be further processed using computational methods. 
+1.Data is an asset
+2.Data integration & business processes :Aligning data integration efforts with business processes enhances operational efficiency, streamlines workflows, and supports end-to-end data flow across systems. It enables organizations to leverage data effectively in their day-to-day operations. 
+
+Aligning data integration efforts with business processes improves operational efficiency and enables end-to-end data flow across systems. 
+
+Integrating data with business processes supports process automation, reduces manual data handling, and streamlines workflows. 
+
+Effective data integration enhances data-driven decision-making, enables real-time insights, and supports agility in responding to changing business needs. 
+
+Security Principles 
+All Technology changes, implementations and processes should adopt the ‘Shift Left’ security mentality, ensuring security is the first and last consideration of any Technological design/change. 
+
+The following Principles outline the ‘thought process’ expected for any technological change/implementation at Chaucer. 
+
+1.Secure by design (shift left):Considering the security requirements of a business application or 
+
+information system as part of its overall requirements, to protect itself and the information it processes, and to resist attacks. 
+2.Defence in depth:Having diverse defensive strategies, so that if one layer of defence turns out to be inadequate, another layer of defence (mitigation) will prevent a security breach. 
+3.Secure by default:Secure by default limits the damage in case of exploited vulnerability or failed control. In order to apply this principle, requires granularity of privileges, permissions, security controls to be established and analysed at the outset. 
+4.Least privilege:Using specific Role permissions to limit access where technically feasible ensures that least privilege is maintained. 
+5.Default deny:Applying the principle of default deny ensures that access is denied, unless explicitly allowed. And for protocols, daemons, and services they are disabled unless explicitly specified as being required for operation. 
+6.Fail secure:Application or system failure should not provide the user additional privileges, and it should not show the user sensitive information. 
+
+Applications. System and Services should be configured in a least privilege model, so that no unnecessary services/daemons or accounts are enabled. 
+7.Usability and manageability:Implementing guardrails, a set of core security functionality in services and systems, will ensure that all deployments are in the desired state of security and any drifts can be detected.   
+8.Data in transit:Protecting data from unauthorized access and ensuring data privacy are critical to maintaining the confidentiality, integrity, and trustworthiness of data. Data breaches and privacy violations can lead to financial and reputational damage 
+9.Asset protection and resilience:Data types that are often overlooked include credentials, configuration data, derived metadata, and logs. These must also be appropriately protected. 
+
+You should consider: 
+
+Physical location and legal jurisdiction 
+
+Data centre security 
+
+Data encryption 
+
+Data sanitisation and equipment disposal 
+
+Physical resilience and availability 
+10.Operational Security:Good operational security should not require complex, bureaucratic, time consuming or expensive processes. The aspects to consider are: 
+
+Vulnerability management 
+
+Protective monitoring 
+
+Incident management 
+
+Configuration and change management 
+11.Identity and Authentication:Services and data should only be accessible to an authenticated and authorised identity, which may be either a user or a service identity. 
+
+Weak authentication to these interfaces may enable unauthorised access to your systems, resulting in the theft or modification of your data, changes to your service, or a denial of service. 
+12.Zero Trust strategy:Segregation (logical and/or physical) should be employed throughout the technology estate, limiting the ‘blast radius’ or failure. 
+
+All communications should follow encrypted channels, regardless of privatisation of networks. 
+
+Accounts should follow Just-In-Time methodologies to limit exposure through breach. 
+
+Site offices should not be considered as ‘trusted’ and follow Zero Trust mentalities. 
+
+Redundancy and Resilience
+Redundancy mainly refers to the 3 aspects of  
+
+High Availability 
+
+Continuous Operations 
+
+Disaster Recovery 
+
+ 
+
+The design pattern is developed according to this logic. 
+
+High Availability refers to avoiding business interruption by redundancy and other designs when the resources running the business fail. 
+
+Continuous Operations mean that the resources for business operation are fault-free, and the business can continuously provide services. 
+
+Disaster Recovery refers to the ability to restore applications and data in different environments when the business operating environment is damaged. 
+1.Redundancy is required :Redundancy and business continuity should be implemented in each layer of the architecture design. No redundancy means that there will be a single point, and a single point of failure will cause local service termination.
+2.Resilience in security and access:In addition to making sure your backup applications, services, and data match your production cloud environment—as well as developing a strong automation strategy that ensures all environments are consistent and updated regularly—you also need to match the security and compliance controls. For instance, you’ll need to replicate your user access controls with a solution that allows you to centrally manage user permissions across your production and DR clouds. 
+3.Resilience Across Networks/Zones/Regions:Cloud Resilience is the ability of servers, storage systems, data servers, or entire networks to remain connected to the network without interfering with their functions or losing their operational capabilities. 
+4.Design for business requirements:Reliability is a subjective concept. For an application to be appropriately reliable, it must reflect the business requirements surrounding it. 
+
+For example, a mission-critical application with a 99.999% service level agreement (SLA) requires a higher level of reliability than another application with an SLA of 95%. 
+
+Cost implications are inevitable when introducing greater reliability and high availability. This trade-off should be carefully considered. 
+5. Design for failure:Failure is impossible to avoid in a highly distributed and multi-tenant environment like Azure. 
+
+By anticipating failures, from individual components to entire Azure regions, you can develop a solution in a resilient way to increase reliability. 
+6.Observe Application Health
+7
+
+Cost of Optimization Principles
+Cloud cost optimization ensures the most appropriate and cost-efficient cloud resources are allocated to each workload or application. It balances required performance, cost, compliance and security requirements, to ensure cloud investments are optimal and appropriate to organizational requirements. 
+1.Budgets in Design and Operation

@@ -1,0 +1,98 @@
+Engineering Standards Cloud
+1.Traffic between subnets or peered vNets will be routed through the vWAN. 
+2.VNet Peering will be setup between Hub and spokes in their respective regions.  Global vNet peering will be via vWAN Hubs. 
+3.Each vNet is isolated from other vNets and vNets do not traverse subscription boundaries. 
+4.NSGs will be used to protect traffic across subnets. 
+5.Azure Application Security Groups (ASG) should not be used within Network Security Groups, reverting to defined subnet ranges and/or ip addresses. 
+6.Routing intent should be enabled as part of the Secure vWAN design, UDR creation designed to override routing intent is forbidden and should be restricted through RBAC. 
+7.Outbound internet access through ‘default’ vNet routing is forbidden. Routing intent for internet connection is required. 
+8.Only Secure vWAN Hubs and not non-secure vWan hubs. 
+9.ASR is the chosen native tool for VM ‘DR’. 
+10.ASR should be used for cross Availability Zones for any VM that does not have Zonal HA deployment. 
+11.ASR should be used to replicate VM’s to ‘DR’ regions. 
+12.Active Directory Domain Controllers should reside in the Identity subscription. 
+13.A minimum of three domain controllers should be deployed per Azure region, residing in alternate availability zones for increased redundancy. 
+14.Azure regions should reflect within AD Sites and Services, identifying as separate entities. 
+15.Configuration of replication partners should be considered for multi-region deployments to reflect traffic latency. 
+16.Private Endpoints should be used to connect to core services wherever possible. 
+17.Firewalls on Storage Accounts and Databases should be enabled with restricted public access. 
+18.All PaaS authentications must use Microsoft Entra ID identities with least‑privilege RBAC assignments :Azure Storage Accounts: 
+
+Allowed: 
+
+Microsoft Entra ID RBAC for Storage (e.g., Storage Blob Data Contributor) 
+
+Azure AD OAuth2 tokens 
+
+Managed Identities accessing Blob, Queue, or Table endpoints 
+
+Restricted:  
+
+Shared Storage Account Keys ( and associated methods) 
+
+Primary or Secondary keys embedded in configuration files 
+
+Connection strings based on account keys 
+
+ 
+
+Azure SQL & Databases: 
+
+Entra‑based authentication must be used for all human administrators and application workloads. 
+
+SQL Authentication (username/password) is prohibited unless explicitly approved and stored in Azure Key Vault. 
+
+Managed Identity must be used for applications accessing the database. 
+
+Local SQL accounts (e.g., sa) must be disabled where platform supports it. 
+
+Azure Functions, App Services, and APIs: 
+
+All app-to-resource calls must use Managed Identity. 
+
+No connection strings containing secrets may be stored in AppSettings. 
+
+Key Vault reference syntax (@Microsoft.KeyVault) must be used for secret material if unavoidable. 
+
+Access tokens for downstream services must be requested dynamically via Entra ID. 
+
+19.Public Facing Services reside on virtual networks within the ‘online’ subscriptions only. 
+20.WAF must be used within a landing-zone virtual network for protecting inbound HTTP/S traffic from the internet. 
+
+Azure Front Door and WAF policies to provide global protection across Azure regions for inbound HTTP/S connections to a landing zone. 
+21.Use Azure DDoS Protection Standard protection plans to help protect the public endpoints you host within your virtual networks.
+22.Users will be granted the least privilege to get their work done by using built in RBAC roles in Azure. 
+23.Resource specific permissions will not be assigned.   
+24.Entra ID PIM will be leveraged to provide time-based and approval-based role activation. 
+25.Adoption of Zero Trust model for new applications and services. This should follow the reference Microsoft Zero Trust architecture for Azure and those published by Chaucer for Landing Zone design. 
+26.The Security Operations Centre should have access to all logs they require to conduct incident response and forensics 
+27.All applications and APIs that are exposed should be protected by a web application firewall and have DDoS mitigation in place
+28.API Management Tools should be utilised when exposing API’s
+29.All applications and APIs that are exposed should follow the zero-trust mentality for ingress of data through a centrally defined point, as defined by the Technology teams. 
+30.Premium services, such as API Management should be a shared service within the organisation, residing in shared subscriptions and not public facing. 
+31.Firewall rulesets must be explicit and contain only the required subnet and port ranges 
+32:.Firewalls should follow the parent-child policy application as recommended by Microsoft best practice. 
+33.IP Groups should be utilised to group services on Firewalls, rather than single entries. 
+34.Web application firewalls must have appropriately tuned rulesets
+35.All passwords, certificates and secrets should be stored and managed securely, allowing for rotation and revocation. 
+
+Key vaults should reside in Cyber subscriptions wherever possible, with pin hole access for programmic retrieval. 
+36.Create a landing zone for the workload. The infrastructure must have appropriate controls and be repeatable with every deployment. 
+37.Chosen IaC tools should be used for any repeatable deployment and/or those with non-production environments. 
+38.Automation should be used as part of cost control and budgeting; this should employ tags as a control mechanism. 
+39.Code Repo’s should be created under the CHAUCER umbrella, currently Azure DevSecOps 
+40.SPN’s should be used for automated services ensuring faceless authorisation. 
+41.DevSecOps Organizations will be associated with the CHAUCER tenant
+42.An Azure DevSecOps private project will be created to store, and version control all ARM/PowerShell/Terraform scripts 
+43.Redundancy and business continuity should be implemented in each layer of the architecture design. 
+44.Monitoring is an important aspect of resiliency. You need a high level of visibility on your cloud infrastructure, services, and applications so you can detect issues as soon as possible and take whatever necessary measures to prevent or mitigate an outage 
+45.Security should apply across DR environments, allowing central management of both environments. DR is not a segway in security posture. 
+46.ZRS or GRS should be used on storage accounts to ensure a higher level of redundancy. 
+47.PaaS Databases should be replicated to ensure consistency of service
+48.Achieve redundancy of cloud hosts through cross-availability zone load balancing deployment. 
+
+Achieve high availability across regions and cloud platforms through global load balancing. 
+49.Improve reliability through cross-availability zone and cross-region data backup in the cloud to avoid storing only one copy of data 
+50.Where HA options are not available, ASR should be used for cross-zone/region replication. 
+51.Cross zone HA should be applied for all critical network infrastructure to ensure continuation of service in the event of a ‘zone’ failure.
+52.
