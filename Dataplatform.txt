@@ -1,0 +1,52 @@
+The one-line proposition
+
+The SIF and the data platform integrate only through two governed hand-off points — a push-in and a serve-out — with a shared canonical contract, Zero-Trust controls on every hop, and one named owner per hand-off. Everything inside the platform is theirs; everything in-flight is ours; nothing reaches across the line directly.
+
+If they remember one thing, it's two doors, one contract, no reaching across.
+
+Why this is the right answer (not just a preference)
+
+It falls straight out of the principles rather than being invented:
+
+Mediated & loosely coupled — no system, and no ADF pipeline, reaches into another's internals; they meet at a contract. That's the whole point of the SIF.
+Canonical model as the contract — one semantics for operational and analytical worlds, so numbers don't drift and a change on one side is a translator change, not an estate-wide one.
+Zero Trust — the platform is treated as a separate trust domain: private connectivity, identity on every call, encryption regardless of network, least privilege. We don't trust it because it's "inside Azure."
+Clear ownership — a boundary with no owner is where incidents and blame live; every door gets a name.
+The two integration patterns (the whole surface area)
+
+1. Push in — SIF lands operational data, the platform ingests.
+We publish operational data/events in canonical form to an agreed landing stage and raise an "available" event; the platform ingests from there (Snowpipe / streaming). Our responsibility ends at the landing stage; theirs begins there.
+
+2. Serve out — SIF consumes curated data and exposes it.
+The platform curates; we read it over Private Link through a thin serving layer and expose it to consumers via APIM with auth, caching and an SLA — marked analytical and eventually-consistent, never treated as a system of record.
+
+Two hard rules that keep it clean:
+
+Bulk/batch movement and all transformation stay inside the platform — the SIF only triggers, never becomes a bulk mover.
+If a curated result must re-enter an operational system, it comes back through the SIF as a governed event/API — the warehouse never writes directly into a live system (informs, doesn't overwrite).
+The Zero-Trust posture on both doors
+
+Non-negotiables, applied identically inbound and outbound:
+
+Private-only connectivity — Private Endpoints / Private Link to the stage and to Snowflake; no public paths; nothing traverses the internet between us.
+Identity, not keys — every call authenticates with a Microsoft Entra managed identity, least-privilege RBAC; no account keys or secret-bearing connection strings; secrets (if ever unavoidable) are Key Vault references.
+Encrypt everything, always — TLS on every hop even though it's private; encryption at rest, with customer-managed keys where classification demands.
+Data protection at the line — PII classified and tokenised/minimised before it crosses the boundary; if the platform must match on a sensitive field it matches on a token we provide, not the raw value.
+Default-deny & least privilege — the platform gets access only to the landing stage and the specific serving objects it needs, nothing wider.
+Observability without leakage — correlation IDs and metadata in logs, not payloads, so the seam is traceable without spilling PII.
+The ADF boundary (the bit they'll actually push on)
+
+State it generously so it lands as protection, not a turf grab:
+
+ADF is welcome as their platform-internal ELT tool — landing-to-curated inside Snowflake. It does not reach into our operational systems and it does not orchestrate cross-system flows. Where it needs operational data, it consumes what the SIF publishes, rather than pulling from sources directly.
+
+That keeps their tool in their domain and stops a second, ungoverned integration platform emerging by accident.
+
+What I'd ask them to agree in the room
+
+Four things, each with an owner and a date:
+
+The push-in path and trigger, and the serve-out path and trigger.
+The landing stage and the serving/export location, each with one named owner.
+Joint ownership of the canonical/data contract (including version and correction semantics) and of PII handling at the line.
+The ADF boundary decision and an incident demarcation at the hand-off (a Snowpipe failure vs a push failure has a clear owner).
