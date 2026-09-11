@@ -1,0 +1,4 @@
+1. Service Catalog and Lifecycle / Governance. We discussed that we have defined the service but have not captured on how services will be registered in a catalog and their lifecycle and governance.
+
+2. The criteria, governance threshold, and decision evidence for selecting Durable Functions over Logic Apps should be clearly specified in the orchestration patterns. Page 11 states "Functions should not become hidden orchestration engines." This contradicts the guidance we have provided in the orchestration patterns.
+ 
