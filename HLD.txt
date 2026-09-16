@@ -1,0 +1,53 @@
+The above was not aligned to Chaucer's HLD template, have done that as well. The below one should be better, sending this as part of the meeting invite too.
+ 
+Proposed APIM HLD Table of Contents
+1. Table of Contents
+2. Document Control
+2.1 Document History
+2.2 Document Authors
+2.3 Document Assurance
+2.4 TDA Approval
+2.5 Document References
+3. Introduction
+3.1 Executive Summary
+3.2 Scope
+3.3 Target Audience
+3.4 Definitions and Terminology
+4. Compliance
+4.1 Architecture Principles
+4.2 Engineering Standards
+4.3 Architectural Decisions
+4.4 Requirements Traceability
+5. Baseline Architecture
+5.1 Current State Summary
+5.2 Existing API & Integration Landscape
+5.3 Current Network & Connectivity Model
+5.4 Existing Security & Access Model
+5.5 Current API Consumption & Exposure Model
+6. Target Architecture
+6.1 Solution Summary
+6.2 APIM Reference Architecture
+6.3 Environment & Deployment Strategy
+6.4 Network & Connectivity Design
+6.5 Traffic Management & Edge Security
+6.6 Authentication & Security Design
+6.7 API Product, Consumer & Developer Portal Model
+6.8 API Design Standards, Policies & Governance
+6.9 API Lifecycle & Versioning Strategy
+6.10 Observability & Operations
+6.11 High Availability & Disaster Recovery Design
+6.12 Cost, Capacity & Service Tier Strategy
+7. Architecture Impact Assessment
+7.1 High Level Impact Assessment
+7.2 Business Architecture
+7.3 Data Architecture
+7.4 Application Architecture
+7.5 Technology Architecture
+7.6 Service Architecture
+8. Risks and Issues
+8.1 Assumptions
+8.2 Risks
+8.3 Issues
+8.4 Dependencies
+      9. Appendices
+ 
