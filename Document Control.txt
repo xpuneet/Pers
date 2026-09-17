@@ -1,0 +1,18 @@
+Document Control
+Executive Summary
+Design Decision choosen one --> ref to matrix of options
+Architecture Context & Scope
+APIM Role & Positioning
+APIM Service Architecture
+Network & Connectivity Design
+Traffic Management & Edge Security
+Authentication & Security Design
+API Product, Consumer & Developer Portal Model
+API Design, Policies & Governance
+API Lifecycle & Versioning Strategy
+Observability & Operations
+Environment & Release Strategy
+High Availability & Disaster Recovery Design
+Capacity, Cost & Service Tiers
+Risks, Assumptions & Decisions
+Appendices
