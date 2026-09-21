@@ -1,0 +1,9 @@
+1. APIM reference architecture - APIM's role within Chaucer's integration landscape and alignment with the SIF, edge service decision (front door + waf + private link).
+2. APIM hosting model - Managed Privatized Deployment, Vnet Injection
+3. External API ingress architecture - Front Door, Application Gateway/WAF and Palo Alto positioning. Exception controls & WAF sufficiency 
+4. External API egress architecture - Virtual WAN routing intent, firewall inspection patterns, Palo Alto deployment model, private connectivity, DNS and   egress.
+5. High availability and disaster recovery - Availability Zones, regional failover options, multi-region timing and HA/DR recommendations.
+	2 units with zone redundency, single zone redudnency with DR in other region , in future can be converted to Active -Active. cost optimization. 
+
+
+PPT with our options for above points and pov.
