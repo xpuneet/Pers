@@ -1,0 +1,14 @@
+Part 2: APIM Design
+High level requirements based on the SIF above:
+•	Enable API discovery and consumption by internal and external users
+•	Provide secure access to services exposed by API
+•	Authentication approach (Azure Entra ID / OAuth 2.0)
+•	Allow controlled access to API’s from (Chaucer) private and public endpoints
+•	Provide access to backend API’s form Chaucer networks (Azure Vnet’s, Azure PaaS, public SaaS)
+•	Protection API endpoints from common web and API hacking techniques, including nbut not limited to DDOS and OWAASP top 10
+•	Provide a robust service with High Availability
+•	Provide backup and DR
+•	Detail HLD relevant versioning and lifecycle
+•	Detail HLD relevant observability and policies
+•	Traffic manager concepts and supporting components.
+•	Cost Effective, but Segregated environments to support release mgmt. (Prod/UAT/DEV)
